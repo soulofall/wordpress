@@ -52,6 +52,7 @@ RUN set -ex; \
 		libpng-dev \
 		libwebp-dev \
 		libzip-dev \
+		libldap2-dev \
 	; \
 {{ ) else ( -}}
 	savedAptMark="$(apt-mark showmanual)"; \
@@ -65,6 +66,7 @@ RUN set -ex; \
 		libpng-dev \
 		libwebp-dev \
 		libzip-dev \
+		libldap2-dev \
 	; \
 {{ ) end -}}
 	\
@@ -80,6 +82,10 @@ RUN set -ex; \
 		intl \
 		mysqli \
 		zip \
+	; \
+	docker-php-ext-configure ldap --with-libdir=lib/x86_64-linux-gnu/ \
+	; \
+	docker-php-ext-install ldap \
 	; \
 {{ if is_alpine then ( -}}
 # WARNING: imagick is likely not supported on Alpine: https://github.com/Imagick/imagick/issues/328
