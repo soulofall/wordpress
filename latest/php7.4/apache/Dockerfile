@@ -44,7 +44,6 @@ RUN set -ex; \
 		intl \
 		mysqli \
 		zip \
-		ldap --with-libdir=lib/x86_64-linux-gnu/ \
 	; \
 	docker-php-ext-configure pdo_mysql \
 	; \
