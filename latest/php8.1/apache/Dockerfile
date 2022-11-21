@@ -44,7 +44,14 @@ RUN set -ex; \
 		intl \
 		mysqli \
 		zip \
-		ldap --with-libdir=lib/x86_64-linux-gnu/ \
+	; \
+	docker-php-ext-configure pdo_mysql \
+	; \
+	docker-php-ext-install pdo_mysql \
+	; \
+	docker-php-ext-configure ldap --with-libdir=lib/x86_64-linux-gnu/ \
+	; \
+	docker-php-ext-install ldap \
 	; \
 # https://pecl.php.net/package/imagick
 	pecl install imagick-3.6.0; \
